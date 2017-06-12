@@ -23,12 +23,24 @@
             NOT/A/B/C
         </div>
     </div>
+    <div id="app-4">
+        <div v-show="aaa">11111</div>
+    </div>
+    <div id="app-3">
+        <template v-if="loginType === 'username'">
+            <label>username</label>
+            <input type="text" key='user-input'  placeholder="Enter your username" name="" value="">
+        </template>
+        <template v-else>
+            <label>Email</label>
+            <input type="text" key="email-input"  placeholder="Enter your Email" name="" value="">
+        </template>
+    </div>
     <script>
         Vue.component("todo-item",{
             template:"<li> {{ todo.text }} </li>",
             props:["todo"]
         });
-
         var app = new Vue({
             el:"#app",
             data:{
@@ -39,12 +51,24 @@
                 ok:false
             }
         });
-
         var app2 = new Vue({
             el:"#app-2",
             data:{
                 type:"d"
             }
+        });
+        var app3 = new Vue({
+            el:"#app-3",
+            data:{
+                loginType:"aa"
+            }
+        });
+
+        var app4 = new Vue({
+            el:"#app-4",
+           data:{
+               aaa:false
+           } 
         });
     </script>
 </body>
