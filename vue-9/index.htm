@@ -77,33 +77,7 @@
         </ul>
     </div>
 
-    <div id="app-7">
-        <input type="text"
-        v-model="NewText"
-        v-on:keyup.enter="addTodo">
-        <ul>
-            <li
-                is="tem-s"
-                v-for="(item,index) in items"
-                v-bind:title="item"
-                v-on:remove="items.splice(index,1)"
-            ></li>
-        </ul>
-
-        <div id="app-8">
-            <input type="text"
-            v-model="newText"
-            v-on:keyup.enter="addTodo">
-
-            <ul>
-                <li 
-                is="ms"
-                v-for="(item,index) in items"
-                v-bind:title="item"
-                v-on:remove="items.splice(index,1)"></li>
-            </ul>
-        </div>
-    </div>
+   
     <script>
         var tem1 = new Vue({
             el:"#app",
@@ -215,53 +189,7 @@
         });
 
 
-        Vue.component("tem-s",{
-           template:"<li>\
-                {{ title }}\
-                <button v-on:click='$emit(\"remove\")'>X</button></li>"
-        });
-
-        new Vue({
-            el:"#app-7",
-            data:{
-                NewText:"",
-                items:[
-                    "last child",
-                    "first child"
-                ]
-            },
-            methods:{
-                addTodo:function (){
-                    this.items.push(this.NewText);
-                    this.NewText = ""
-                }
-            }
-        });
-
-        Vue.component("ms",{
-            template:"<li>\
-            {{title}}\
-            <button v-on:click='$emit(remove)'></button></li>",
-            props:["title"]
-        });
-
-        new Vue({
-            el:"#app-8",
-            data:{
-                newText:"",
-                items:[
-                    "Hello is last - 1",
-                    "Hello is last - 2",
-                    "Hello is last - 3"
-                ]
-            },
-            methods:{
-                addTodo:function (){
-                    this.items.push(this.newText);
-                    this.newText = "";
-                }
-            }
-        });
+        
     </script>
 </body>
 </html>
