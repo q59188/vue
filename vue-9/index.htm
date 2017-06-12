@@ -77,6 +77,20 @@
         </ul>
     </div>
 
+    <div id="app-7">
+        <input type="text"
+        v-model="font"
+        v-on:keyup.enter="addTodo"
+        placeholder="add a todos">
+
+        <ul>
+            <li 
+                is="todo-item"
+                v-for="(item,index) in items"
+                v-bind:title="item"
+                v-on:remove="items.splice(index,1)"></li>
+        </ul>
+    </div>
    
     <script>
         var tem1 = new Vue({
@@ -188,8 +202,29 @@
             }
         });
 
-
-        
+        Vue.component("todo-item",{
+            template:"<li>\
+            {{ title }}\
+            <button v-on:click='$emit(\"remove\")'>X</button></li>",
+            props:["title"]
+        });
+        new Vue({
+            el:"#app-7",
+            
+            data:{
+                font:"",
+                items:[
+                    "is aaa",
+                    "is bbb"
+                ]
+            },
+            methods:{
+                addTodo:function (){
+                    this.items.push(this.font);
+                    this.font = "";
+                }
+            }
+        });
     </script>
 </body>
 </html>
