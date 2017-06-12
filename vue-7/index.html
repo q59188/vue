@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/vue/2.3.3/vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div class='static' v-bind:class="{active:isActive }">您好世界！</div>
+        <div v-bind:class="classObject">Hello World!</div>
+
+        <div v-bind:class="[actives,errors]">哈哈哈哈</div>
+        <div v-bind:class="[isOk ? active : error]">呵呵呵</div>
+    </div>
+
+    <div id="demo">
+        <ul>
+            <todo-item v-bind:class="{ active:isActive }" v-for="item in items" v-bind:todo="item"></todo-item>
+        </ul>
+    </div>
+
+    <div id="style">
+        <div v-bind:style="[StyleObject,nweA]">您好，世界！</div>
+    </div>
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                isActive:true,
+                error:null,
+                actives:"active",
+                errors:"red",
+                isOk:false
+            },
+            computed:{
+                classObject:function (){
+                    return{
+                        active:this.isActive && !this.error,
+                        "text-dangr":true
+                    }
+                }
+            }
+        });
+
+        Vue.component("todo-item",{
+            template:"<li>{{ todo.text }}</li>",
+            props:["todo"]
+        });
+
+        var demo = new Vue({
+            el:"#demo",
+            data:{
+                items:[
+                    {text:"1230"},
+                    {text:'10086'}
+                ],
+                isActive:true
+            }
+        });
+
+        var style = new Vue({
+            el:"#style",
+            data:{
+                StyleObject:{
+                    color:"blue",
+                    fontSize:"18px"
+                },
+                nweA:{
+                    backgroundColor:"red",
+                    transition:"all 0.2s"
+                }
+            }
+        });
+    </script>
+</body>
+</html>

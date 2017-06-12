@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/vue/2.3.3/vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>{{ number + 1 }}</p>
+        <p>{{ ok ? "yes" : "No" }}</p>
+       <p>{{ message.split("").reverse().join("") }}</p> 
+       <div v-bind:id="'list-'+id">aaa</div>
+       <p v-if='seen'>Now you see me!</p>
+       <p><a v-bind:href="url">百度</a></p>
+       <button type="" @click='alert'>按钮</button>
+    </div>
+
+
+    <script>
+
+        var app = new Vue({
+            el:"#app",
+            data:{
+                number:10,
+                ok:false,
+                message:"321",
+                id:"aa",
+                seen:true,
+                url:"http://www.baidu.com",
+                alert:function (){
+                    alert();
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>

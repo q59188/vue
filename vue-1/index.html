@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.bootcss.com/vue/2.3.3/vue.min.js"></script>
+</head>
+<body>
+	<div id='app'>
+		{{ message }}
+	</div>
+
+	<div id='app-2'>
+		<span v-bind:title='message'>
+			Hello World!
+		</span>
+	</div>
+
+
+	<div id='app-3'>
+		<p v-if='send'>现在你看到我了！</p>
+	</div>
+
+	<div id="app-4">
+		<ol>
+			<li v-for='todo in todos'>
+				{{ todo.text }}
+			</li>
+		</ol>
+	</div>
+	<script>
+		var  app = new Vue({
+			el:'#app',
+			data:{
+				message:'Hello Vue!'
+			}
+		});
+
+		var app2 = new Vue({
+			el:"#app-2",
+			data:{
+				message:"page in "+new Date()
+			}
+		});
+
+		var app3 = new Vue({
+			el:"#app-3",
+			data:{
+				send:false
+			}
+		});
+
+		var app4 = new Vue({
+			el:"#app-4",
+			data:{
+				todos:[
+					{text:"num 1"},
+					{text: "num 2"},
+					{text: "num 3"}
+				]
+			}
+		});
+	</script>
+</body>
+</html>

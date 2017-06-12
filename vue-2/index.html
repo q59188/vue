@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/vue/2.3.3/vue.min.js"></script>
+</head>
+<body>
+    <div id="app-1">
+        <ul>
+            <li v-for='todo in todos'>{{ todo.text }}</li>
+        </ul>
+    </div>
+    <div id="app-2">
+        <p>{{ message }}</p>
+        <button type="" v-on:click="messagereverse" >逆转文字</button>
+    </div>
+    <div id="app-3">
+        <p>{{ message }}</p>
+        <input type="text" v-model='message' name="" value="">
+    </div>
+
+    <script>
+        var app1 = new Vue({
+            el:"#app-1",
+            data:{
+                todos:[
+                    {text:'您好 , 世界！'},
+                    {text:"Hello world!"},
+                    {text:"Hello Vue"}
+                ]
+            }
+        });
+
+        var app2 = new Vue({
+            el:"#app-2",
+            data:{
+                message:"我会被逆转哦!"
+            },
+            methods:{
+                messagereverse:function (){
+                    this.message = this.message.split("").reverse().join("")
+                }
+            }
+        });
+
+        var app3 = new Vue({
+            el:"#app-3",
+            data:{
+                message:"Hello World!"
+            }
+        });
+    </script>
+</body>
+</html>

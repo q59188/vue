@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/vue/2.3.3/vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{ a }}
+    </div>
+
+    <script>
+        var data = {a : 1024};
+        var vm = new Vue({
+            el:"#app",
+            data:data
+        });
+
+        vm.$watch("a" , function (newval , oldval){
+            console.log(newval , oldval);
+        });
+
+
+        var vm2 = new Vue({
+            data:{
+                a:"1123"
+            },
+            created:function (){
+                console.log("a is"+this.a);
+            }
+        });
+    </script>
+</body>
+</html>
