@@ -44,6 +44,52 @@
             ></li>
         </ul>
     </div>
+
+    <div id="app-5">
+        <input type="text"
+            v-model="newTodoText"
+            v-on:keyup.enter="addNewTodo"
+            placeholder="Add a todo"
+        >
+        <ul>
+            <li
+                is="todo-index"
+                v-for="(index,item) in items"
+                v-bind:title="index"
+                v-on:remove="items.splice(index,1)"
+            ></li>
+        </ul>
+    </div>
+
+    <div id="app-6">
+        <input type="text"
+            v-model="newTodoText"
+            v-on:keyup.enter="addNewTodo"
+            placeholder="Add a Todo"
+        >
+        <ul>
+            <li
+                is="todo-index"
+                v-for="(item,index) in items"
+                v-bind:title="item"
+                v-on:remove="items.splice(index,1)"
+            ></li>
+        </ul>
+    </div>
+
+    <div id="app-7">
+        <input type="text"
+        v-model="NewText"
+        v-on:keyup.enter="addTodo">
+        <ul>
+            <li
+                is="tem-s"
+                v-for="(item,index) in items"
+                v-bind:title="item"
+                v-on:remove="items.splice(index,1)"
+            ></li>
+        </ul>
+    </div>
     <script>
         var tem1 = new Vue({
             el:"#app",
@@ -101,6 +147,82 @@
             }
         });
 
+        Vue.component("todo-index",{
+            template:"<li>\
+               {{title}}\
+                <button v-on:click='$emit(\"remove\")'>X</button>    \
+                </lo>",
+                props:["title"]
+
+        });
+        new Vue({
+            el:"#app-5",
+            data:{
+                newTodoText:"",
+                items:[
+                    "this is 1!",
+                    "this is 2",
+                    "this is 3"
+                ]
+            },
+            methods:{
+                addNewTodo:function (){
+                    this.items.push(this.newTodoText);
+                    this.newTodoText = "";
+                }
+            }
+        });
+
+        
+        Vue.component("todo-index",{
+                template:"<li>\
+                    {{title}}\
+                    <button v-on:click='$emit(\"remove\")'>X</button>    \
+                    </lo>",
+                    props:["title"]
+
+            });
+        new Vue({
+            el:"#app-6",
+            data:{
+                newTodoText:"",
+                items:[
+                    "Hello world!",
+                    "Hello Vue",
+                    "Hellow Angular"
+                ]
+            },
+            methods:{
+                addNewTodo:function (){
+                    this.items.push(this.newTodoText);
+                    this.newTodoText = "";
+                }
+            }
+        });
+
+
+        Vue.computed("tem-s",{
+           template:"<li>\
+                {{ title }}\
+                <button v-on:click='$emit(\"remove\")'>X</button></li>"
+        });
+
+        new Vue({
+            el:"#app-7",
+            data:{
+                NewText:"",
+                items:[
+                    "last child",
+                    "first child"
+                ]
+            },
+            methods:{
+                addTodo:function (){
+                    this.items.push(this.NewText);
+                    this.NewText = ""
+                }
+            }
+        });
     </script>
 </body>
 </html>
